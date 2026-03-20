@@ -6,3 +6,28 @@
     right: 0;
     width: 100%;
 }
+
+#legend {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+#legend h4 { margin: 0 0 10px 0; }
+
+#legend-bar {
+    height: 12px;
+    background: linear-gradient(to right, #ffffcc, #fd8d3c, #f03b20, #bd0026);
+    margin-bottom: 5px;
+}
+
+#legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
