@@ -92,7 +92,7 @@ collishex.features.forEach((feature) => {
 
 //---Print maximum collision count for verification
 console.log('Max collisions:', maxcollis);
-});
+
 
 // /*--------------------------------------------------------------------
 // Step 5: FINALIZE YOUR WEB MAP
@@ -135,4 +135,5 @@ map.addLayer({
         ],
         'fill-opacity': 0.7
     }
+});
 });
