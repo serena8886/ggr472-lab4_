@@ -122,6 +122,24 @@ Step 4: AGGREGATE COLLISIONS BY HEXGRID
                     'fill-opacity': 0.7
                  }
             });
+                    // ---Listen for click events to show popup
+                        map.on('click', 'hexgrid-fill', (e) => {
+                            let count = e.features[0].properties.COUNT;
+                            new mapboxgl.Popup()
+                                .setLngLat(e.lngLat)
+                                .setHTML(`<strong>Collisions: ${count}</strong>`)
+                                .addTo(map);
+                        });
+
+                        // ---Change cursor to pointer on hover
+                        map.on('mouseenter', 'hexgrid-fill', () => {
+                            map.getCanvas().style.cursor = 'pointer';
+                        });
+
+                        // ---Restore default cursor on mouse leave
+                        map.on('mouseleave', 'hexgrid-fill', () => {
+                            map.getCanvas().style.cursor = '';
+                        });
 
         });
  });
