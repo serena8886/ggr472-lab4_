@@ -40,7 +40,7 @@ map.on('load', () => {
             let envScaled = turf.transformScale(envresult, 1.1);// ---Scale bounding box up by 10% to avoid missing edge points
 
             //      Access and store the bounding box coordinates as an array variable
-            let bboxCoords = envScaled.bbox; //--- Format: [minX, minY, maxX, maxY]
+            let bboxCoords = turf.bbox(envScaled); //--- Format: [minX, minY, maxX, maxY]
 
             //      Use bounding box coordinates as argument in the turf hexgrid function
             let hexgrid = turf.hexGrid(bboxCoords, 0.5, { units: 'kilometers' }); // ---Generate hexagon grid with 0.5km cell size within bounding box
