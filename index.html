@@ -19,7 +19,30 @@
 
     <!-- MAP CONTAINER -->
     <div id='map' class='map'></div>
+    <!-- Legend -->
+    <div id='legend'>
+        <h4>
+            Pedestrian & Cyclist Collisions<br>
+        </h4>
 
+
+        <!-- Gradient colour bar -->
+        <div id='legend-bar'></div>
+
+        <!-- Labels: low to high -->
+        <div id='legend-labels'>
+            <span>Low / 低</span>
+            <span>High / 高</span>
+        </div>
+        
+        <!-- Data source -->
+        <p id='legend-source'>
+            Source: <a href='https://open.toronto.ca/dataset/motor-vehicle-collisions-involving-killed-or-seriously-injured-persons/' target='_blank'>
+                Toronto Open Data
+        </p>
+    </div>
+
+   <!--Map Script-->
     <script src="script.js"></script>
 
 </body>
