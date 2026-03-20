@@ -50,3 +50,13 @@
     margin-top: 8px;
     accent-color: #bd0026;
 }
+#layer-toggle {
+    margin-bottom: 10px;
+}
+
+#layer-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}

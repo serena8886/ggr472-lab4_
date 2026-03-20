@@ -43,17 +43,10 @@ map.on('load', () => {
             let bboxCoords = turf.bbox(envScaled); //--- Format: [minX, minY, maxX, maxY]
 
             //      Use bounding box coordinates as argument in the turf hexgrid function
-            let hexgrid = turf.hexGrid(bboxCoords, 0.5, { units: 'kilometers' }); // ---Generate hexagon grid with 0.5km cell size within bounding box
+            let hexgrid = turf.hexGrid(bboxCoords, 0.3, { units: 'kilometers' }); // ---Generate hexagon grid with 0.5km cell size within bounding box
 
-           /// ---Add hexagon grid as data source
-
-            map.addSource('hexgrid', {
-                type: 'geojson',
-                data: hexgrid
-            });
 //      **Option: You may want to consider how to increase the size of your bbox to enable greater geog coverage of your hexgrid
 //                Consider return types from different turf functions and required argument types carefully here
-
 
 /*--------------------------------------------------------------------
 Step 4: AGGREGATE COLLISIONS BY HEXGRID
@@ -163,5 +156,14 @@ Step 4: AGGREGATE COLLISIONS BY HEXGRID
                             // ---Only show hexagons with COUNT >= selected minimum
                             map.setFilter('hexgrid-fill', ['>=', ['get', 'COUNT'], minCount]);
                     });
+                        // ---Get checkbox element
+                            const toggle = document.getElementById('hexgrid-toggle');
+
+                            // ---Show or hide hexgrid layer when checkbox changes
+                            toggle.addEventListener('change', (e) => {
+                                // ---If checked, show layer; if unchecked, hide layer
+                                const visibility = e.target.checked ? 'visible' : 'none';
+                                map.setLayoutProperty('hexgrid-fill', 'visibility', visibility);
+                            });
     });
  });
