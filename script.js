@@ -43,7 +43,7 @@ map.on('load', () => {
             let bboxCoords = turf.bbox(envScaled); //--- Format: [minX, minY, maxX, maxY]
 
             //      Use bounding box coordinates as argument in the turf hexgrid function
-            let hexgrid = turf.hexGrid(bboxCoords, 0.3, { units: 'kilometers' }); // ---Generate hexagon grid with 0.5km cell size within bounding box
+            let hexgrid = turf.hexGrid(bboxCoords, 0.3, { units: 'kilometers' }); // ---Generate hexagon grid with 0.3km cell size within bounding box
 
 //      **Option: You may want to consider how to increase the size of your bbox to enable greater geog coverage of your hexgrid
 //                Consider return types from different turf functions and required argument types carefully here
