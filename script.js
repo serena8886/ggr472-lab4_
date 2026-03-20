@@ -11,7 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2VyZW5heGllIiwiYSI6ImNta2RnM29ocjBiYmQzZnB3Z
 // Initialize map and edit to your preference
 const map = new mapboxgl.Map({
     container: 'map', // container id in HTML
-    style: '',  // ****ADD MAP STYLE HERE *****
+    style: 'mapbox://styles/mapbox/dark-v11',  // ****ADD MAP STYLE HERE *****
     center: [-79.39, 43.65],  // starting point, longitude/latitude
     zoom: 11 // starting zoom level
 });
@@ -24,15 +24,13 @@ Step 2: VIEW GEOJSON POINT DATA ON MAP
 let collisionData;
 map.on('load', () => {
 //      Use the fetch method to access the GeoJSON from your online repository
-    fetch('https://github.com/serena8886/ggr472-lab4_/blob/main/data/pedcyc_collision_06-21.geojson')
+    fetch('https://raw.githubusercontent.com/serena8886/ggr472-lab4_/main/data/pedcyc_collision_06-21.geojson')
 //      Convert the response to JSON format and then store the response in your new variable
         .then(response => response.json())
         .then(data => {
             collisionData = data;
             console.log(collisionData);
         });
-});
-
 /*--------------------------------------------------------------------
     Step 3: CREATE BOUNDING BOX AND HEXGRID
 --------------------------------------------------------------------*/
@@ -94,8 +92,7 @@ collishex.features.forEach((feature) => {
 
 //---Print maximum collision count for verification
 console.log('Max collisions:', maxcollis);
-
-
+});
 
 // /*--------------------------------------------------------------------
 // Step 5: FINALIZE YOUR WEB MAP
