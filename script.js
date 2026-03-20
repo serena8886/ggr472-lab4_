@@ -54,21 +54,6 @@ map.on('load', () => {
 //      **Option: You may want to consider how to increase the size of your bbox to enable greater geog coverage of your hexgrid
 //                Consider return types from different turf functions and required argument types carefully here
 
-            // ---Add hexagon grid as fill layer
-            map.addLayer({
-                id: 'hexgrid-layer',
-                type: 'fill',
-                source: 'hexgrid',
-                paint: {
-                    // ---Temporary test color
-                    'fill-color': 'blue',         
-                    //---Layer opacity
-                    'fill-opacity': 0.3,           
-                    //---Hexagon outline color
-                    'fill-outline-color': 'white'
-                }
-            });
-
 
 /*--------------------------------------------------------------------
 Step 4: AGGREGATE COLLISIONS BY HEXGRID
