@@ -122,24 +122,46 @@ Step 4: AGGREGATE COLLISIONS BY HEXGRID
                     'fill-opacity': 0.7
                  }
             });
-                    // ---Listen for click events to show popup
-                        map.on('click', 'hexgrid-fill', (e) => {
+                    // ---Create popup but don't add to map yet
+                        const popup = new mapboxgl.Popup({
+                            closeButton: false,  // ---No close button needed for hover popup
+                            closeOnClick: false  // ---Don't close when clicking elsewhere
+                        });
+
+                        // ---Show popup on mouse hover
+                        map.on('mousemove', 'hexgrid-fill', (e) => {
                             let count = e.features[0].properties.COUNT;
-                            new mapboxgl.Popup()
+                            popup
                                 .setLngLat(e.lngLat)
                                 .setHTML(`<strong>Collisions: ${count}</strong>`)
                                 .addTo(map);
                         });
 
-                        // ---Change cursor to pointer on hover
-                        map.on('mouseenter', 'hexgrid-fill', () => {
-                            map.getCanvas().style.cursor = 'pointer';
-                        });
-
-                        // ---Restore default cursor on mouse leave
+                        // ---Remove popup when mouse leaves hexagon
                         map.on('mouseleave', 'hexgrid-fill', () => {
+                            popup.remove();
                             map.getCanvas().style.cursor = '';
                         });
 
-        });
+                        // ---Change cursor to pointer on hover
+                        map.on('mouseenter', 'hexgrid-fill', () => {
+                            map.getCanvas().style.cursor = 'pointer';
+                     });
+                     // ---Get filter slider element
+                        const slider = document.getElementById('collision-filter');
+                        const filterValue = document.getElementById('filter-value');
+
+                        // ---Update map filter when slider changes
+                        slider.addEventListener('input', (e) => {
+                            // ---Get current slider value
+                            let minCount = parseInt(e.target.value);
+
+                            // ---Update displayed number
+                            filterValue.textContent = minCount;
+
+                            // ---Apply filter to hexgrid layer
+                            // ---Only show hexagons with COUNT >= selected minimum
+                            map.setFilter('hexgrid-fill', ['>=', ['get', 'COUNT'], minCount]);
+                    });
+    });
  });

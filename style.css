@@ -10,7 +10,7 @@
 #legend {
     position: absolute;
     bottom: 30px;
-    right: 10px;
+    left: 10px;
     background: white;
     padding: 15px;
     border-radius: 8px;
@@ -30,4 +30,23 @@
     display: flex;
     justify-content: space-between;
     font-size: 11px;
+}
+#filter-bar {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    width: 200px;
+}
+
+#filter-bar h4 { margin: 0 0 10px 0; }
+
+#collision-filter {
+    width: 100%;
+    margin-top: 8px;
+    accent-color: #bd0026;
 }

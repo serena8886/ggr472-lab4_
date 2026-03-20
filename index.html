@@ -41,7 +41,19 @@
                 Toronto Open Data</a>
         </p>
     </div>
-
+    <!-- Filter Bar -->
+    <div id='filter-bar'>
+        <h4>Filter by Collisions</h4>
+        <label>Min: <span id='filter-value'>0</span></label>
+        <input 
+            id='collision-filter' 
+            type='range' 
+            min='0' 
+            max='55' 
+            step='1' 
+            value='0'
+        />
+    </div>
    <!--Map Script-->
     <script src="script.js"></script>
 
