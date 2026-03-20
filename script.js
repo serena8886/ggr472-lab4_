@@ -21,7 +21,10 @@ const map = new mapboxgl.Map({
 Step 2: VIEW GEOJSON POINT DATA ON MAP
 --------------------------------------------------------------------*/
 //HINT: Create an empty variable
+let collisionData;
+map.on('load', () => {
 //      Use the fetch method to access the GeoJSON from your online repository
+    fetch('https://raw.githubusercontent.com/serena8886/ggr472-lab4_/main/data/pedcyc_collision_06-21.geojson')
 //      Convert the response to JSON format and then store the response in your new variable
 
 
